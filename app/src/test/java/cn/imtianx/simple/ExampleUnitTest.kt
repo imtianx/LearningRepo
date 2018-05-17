@@ -1,4 +1,4 @@
-package cn.imtianx.tx_and_learning_repo
+package cn.imtianx.simple
 
 import org.junit.Test
 

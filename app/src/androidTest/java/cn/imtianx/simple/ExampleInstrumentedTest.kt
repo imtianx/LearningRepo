@@ -1,4 +1,4 @@
-package cn.imtianx.tx_and_learning_repo
+package cn.imtianx.simple
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
