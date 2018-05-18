@@ -22,9 +22,6 @@ data class BillsData(
     var billsChecked = ObservableBoolean(false)
 
     var billsAmount = ObservableDouble(0.0)
-        set(value) {
-            refreshAmount()
-        }
 
     var testCbChecked = ObservableBoolean(true)
 
