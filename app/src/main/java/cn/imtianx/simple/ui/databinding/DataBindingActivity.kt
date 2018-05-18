@@ -2,6 +2,7 @@ package cn.imtianx.simple.ui.databinding
 
 import android.databinding.DataBindingUtil
 import android.databinding.Observable
+import android.databinding.ObservableBoolean
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -35,10 +36,20 @@ class DataBindingActivity : AppCompatActivity() {
                 R.layout.activity_data_binding)
 
         initData()
+        refreshAmount()
         billsAdapter = BillsAdapter(billsData)
         recycler.adapter = billsAdapter
-
         binding.setVariable(BR.mainBillsData, billsData[0])
+
+
+        billsData[0].testCbChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                if (sender is ObservableBoolean) {
+                    Log.e("tx", "======================  ${sender.get()}")
+                }
+            }
+
+        })
 
     }
 
@@ -74,9 +85,6 @@ class DataBindingActivity : AppCompatActivity() {
                 }.forEach {
                     totalSelectPrice += it.billsAmount.get()
                 }
-
-        Log.e("tx", "refreshAmount      ")
-
         binding.setVariable(BR.mainTotalAmount, totalSelectPrice.toString())
     }
 

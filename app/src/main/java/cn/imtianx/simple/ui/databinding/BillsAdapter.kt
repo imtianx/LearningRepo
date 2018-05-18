@@ -35,7 +35,7 @@ class BillsAdapter(var data: List<BillsData>) : RecyclerView.Adapter<BillsAdapte
         holder.itemView.findViewById<CheckBox>(R.id.cb_all).apply {
             tag = position
             setOnClickListener {
-                var checked = false
+                var checked = true
                 if (it is CheckBox) {
                     checked = it.isChecked
                 }

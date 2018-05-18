@@ -32,9 +32,6 @@ class BillSingleAdapter(var data: List<BillSingle>) : RecyclerView.Adapter<BillS
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindingData(data[position])
-        holder.itemView.findViewById<CheckBox>(R.id.cb_bill_single).apply {
-            data[position].billSingleChecked.set(isChecked)
-        }
     }
 
 

@@ -22,9 +22,11 @@ data class BillsData(
     var billsChecked = ObservableBoolean(false)
 
     var billsAmount = ObservableDouble(0.0)
+        set(value) {
+            refreshAmount()
+        }
 
-    var testCbChecked = ObservableField<String>()
-
+    var testCbChecked = ObservableBoolean(true)
 
     fun refreshAmount() {
         val totalAmount = billSingles.filter { it.billSingleChecked.get() }
@@ -33,14 +35,12 @@ data class BillsData(
         billsAmount.set(totalAmount)
     }
 
-    var checkCount = 0
+    var checkCount = billSingles.size
 
 
     fun setupObservableField(onAmountChangeCallBack: Observable.OnPropertyChangedCallback) {
-        billsChecked = ObservableBoolean(false)
+        billsChecked = ObservableBoolean(true)
         billSingles.forEach {
-            it.setupObservableField()
-
             it.billSingleChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
                 override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                     if (sender is ObservableBoolean) {
@@ -50,15 +50,15 @@ data class BillsData(
                         } else {
                             checkCount--
                         }
-                        Log.e("tx", "checkCount      : $checkCount")
+                        Log.e("tx", "---------------checkCount---------- : $checkCount\n")
                         billsChecked.set(checkCount == billSingles.size)
                         refreshAmount()
                     }
                 }
 
+
             })
         }
-        billsAmount = ObservableDouble(0.0)
         billsAmount.addOnPropertyChangedCallback(onAmountChangeCallBack)
 
     }
@@ -69,9 +69,6 @@ data class BillSingle(
         var date: String,
         var totalPrice: String
 ) {
-    var billSingleChecked = ObservableBoolean(false)
+    var billSingleChecked = ObservableBoolean(true)
 
-    fun setupObservableField(){
-        billSingleChecked = ObservableBoolean(false)
-    }
 }
