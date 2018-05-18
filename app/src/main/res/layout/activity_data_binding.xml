@@ -3,7 +3,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <data>
-    
+        
+        <variable
+            name="mainTotalAmount"
+            type="String"/>
+        
+        <variable
+            name="mainBillsData"
+            type="cn.imtianx.simple.ui.databinding.BillsData"/>
     </data>
     
     <android.support.constraint.ConstraintLayout
@@ -12,15 +19,14 @@
         
         <TextView
             android:id="@+id/tv_all_amount"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="全部价格："
-            android:textColor="#f40519"
             android:layout_marginTop="20dp"
+            android:padding="16dp"
+            android:text="@{@string/text_main_bills_count(mainTotalAmount)}"
+            android:textColor="#f40519"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintLeft_toLeftOf="parent"/>
         
         
         <android.support.v7.widget.RecyclerView

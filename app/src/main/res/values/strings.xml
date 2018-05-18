@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">xSimple</string>
+    <string name="text_bills_count">合计：%s</string>
+    <string name="text_main_bills_count">已选择价格：%s</string>
+    <string name="text_cb_checked">cb_checke：%s</string>
 </resources>

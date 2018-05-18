@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.CheckBox
 import cn.imtianx.simple.BR
 import cn.imtianx.simple.R
 
@@ -31,6 +32,9 @@ class BillSingleAdapter(var data: List<BillSingle>) : RecyclerView.Adapter<BillS
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindingData(data[position])
+        holder.itemView.findViewById<CheckBox>(R.id.cb_bill_single).apply {
+            data[position].billSingleChecked.set(isChecked)
+        }
     }
 
 
