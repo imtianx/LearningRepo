@@ -15,7 +15,7 @@ import cn.imtianx.simple.R
  * @author 奚岩
  * @date 2018/5/17 下午9:02
  */
-class BillAdapter(var datas: ArrayList<BillDataResp>) : RecyclerView.Adapter<BillAdapter.ViewHolder>() {
+class BillsAdapter(var data: List<BillsData>) : RecyclerView.Adapter<BillsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ViewDataBinding = DataBindingUtil
@@ -26,19 +26,24 @@ class BillAdapter(var datas: ArrayList<BillDataResp>) : RecyclerView.Adapter<Bil
     }
 
     override fun getItemCount(): Int {
-        return datas.size
+        return data.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindingData(datas.get(position))
+        holder.bindingData(data[position])
+        val billSingleAdapter = BillSingleAdapter(data[position].billSingles)
+        holder.itemView.findViewById<RecyclerView>(R.id.item_recycler).apply {
+            adapter = billSingleAdapter
+            isNestedScrollingEnabled = false
+        }
 
     }
 
 
     class ViewHolder(var viewDatabinding: ViewDataBinding) : RecyclerView.ViewHolder(viewDatabinding.root) {
 
-        fun bindingData(itemData: BillDataResp) {
-            viewDatabinding.setVariable(BR.adapter, itemData)
+        fun bindingData(itemData: BillsData) {
+            viewDatabinding.setVariable(BR.billsData, itemData)
         }
     }
 }

@@ -3,7 +3,7 @@ package cn.imtianx.simple
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import cn.imtianx.simple.ui.DataBindingActivity
+import cn.imtianx.simple.ui.databinding.DataBindingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

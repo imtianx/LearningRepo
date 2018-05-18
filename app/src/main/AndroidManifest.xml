@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".ui.DataBindingActivity"
+        <activity android:name=".ui.databinding.DataBindingActivity"
             android:label="DataBinding双向绑定"/>
     </application>
 

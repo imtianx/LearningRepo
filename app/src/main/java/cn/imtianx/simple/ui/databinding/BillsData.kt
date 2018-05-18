@@ -1,7 +1,5 @@
 package cn.imtianx.simple.ui.databinding
 
-import android.databinding.ObservableField
-
 /**
  * <pre>
  *     @desc:
@@ -9,7 +7,14 @@ import android.databinding.ObservableField
  * @author 奚岩
  * @date 2018/5/17 下午4:57
  */
-data class BillDataResp(var neme: String, var age: Int) {
+data class BillsData(
+        var date: String,
+        var totalPrice: String,
+        var billSingles: List<BillSingle>) {
 
-    var desc = ObservableField<String>()
 }
+
+data class BillSingle(
+        var date: String,
+        var totalPrice: String
+)
