@@ -1,0 +1,81 @@
+// comm third library dependencies
+// create by imtianx 2018-05-19 03：00
+
+
+def build_version = [:]
+build_version.min_sdk = 14
+build_version.target_sdk = 22
+build_version.build_tools = "27.1.1"
+ext.build_version = build_version
+
+ext.deps = [:]
+def versions = [:]
+versions.kotlin = "1.2.30"
+versions.android_gradle_plugin = "3.1.0"
+versions.support = "27.1.1"
+versions.constraint_layout = "1.1.0"
+versions.junit = "4.12"
+versions.test_runner = "1.0.2"
+versions.test_espresso_core = "3.0.2"
+versions.espresso = "3.0.2"
+
+versions.retrofit = "2.4.1"
+versions.retrofit_adapter_version = "2.4.1"
+
+versions.rxjava2 = "2.2.2"
+versions.rxandroid = "2.0.2"
+versions.rxbus = "1.0.2"
+versions.rxbinding2 = "2.1.1"
+
+versions.databinding_compile = "3.1.2"
+versions.glide = "4.4.4"
+
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat_v7 = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+
+support.constraint_layout = "com.android.support.constraint:constraint-layout$versions.constraint_layout"
+deps.support = support
+
+
+def test = [:]
+test.runner = "junit:junit:$versions.junit"
+test.test_runner = "com.android.support.test:runner:$versions.test_runner"
+test.test_espresso_core = "jcom.android.support.test.espresso:espresso-core:$versions.test_espresso_core"
+deps.test = test
+
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+deps.kotlin = kotlin
+
+def retrofit = [:]
+retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.adapter_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
+
+def rx = [:]
+rx.rxjava2 = "io.reactivex:rxjava:$versions.rxjava2"
+rx.rxandroid = "io.reactivex:rxjava:$versions.rxandroid"
+rx.rxbus = "'com.eightbitlab:rxbus:$versions.rxbus"
+rx.rxbinding2 = "'com.jakewharton.rxbinding2:$versions.rxbinding2"
+deps.rx = rx
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+deps.databinding_compile = "com.android.databinding:compiler:$versions.databinding_compile"
+deps.databinding_compile = "com.github.bumptech.glide:glide:$versions.glide"
+ext.deps = deps
+
+
+
