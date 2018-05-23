@@ -1,0 +1,11 @@
+dependencies {
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.test_runner
+    androidTestImplementation deps.test.test_espresso_core
+
+    /*
+    testCompile deps.test.robolectric
+    testCompile deps.test.robolectric_annotations
+    testCompile deps.test.robolectric_shadows_support_v4
+    */
+}
