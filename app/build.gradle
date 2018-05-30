@@ -47,4 +47,6 @@ dependencies {
     implementation deps.support.constraint_layout
     implementation deps.support.recyclerview_v7
     kapt deps.databinding_compile
+
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
 }
