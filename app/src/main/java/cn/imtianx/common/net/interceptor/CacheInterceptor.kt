@@ -1,11 +1,19 @@
 package cn.imtianx.common.net.interceptor
 
+import okhttp3.Interceptor
+import okhttp3.Response
+
 /**
  * <pre>
- *     @desc:
+ *     @desc: cache intercepter
  * </pre>
  * @author 奚岩
- * @date 2018/5/30 11:41 PM
+ * @date 2018/5/30 12:41 PM
  */
-class CacheInterceptor {
+class CacheInterceptor : Interceptor {
+
+    override fun intercept(chain: Interceptor.Chain?): Response {
+
+        TODO("not implemented")
+    }
 }

@@ -1,11 +1,34 @@
 package cn.imtianx.common.net.interceptor
 
+import android.util.Log
+import okhttp3.Interceptor
+import okhttp3.Response
+import java.io.IOException
+
 /**
  * <pre>
- *     @desc:
+ *     @desc: timeout retry interceptor
  * </pre>
  * @author 奚岩
- * @date 2018/5/30 11:42 PM
+ * @date 2018/5/30 01:42 PM
  */
-class RetryInterceptor {
+class RetryInterceptor(var maxRetryNum: Int = 3) : Interceptor {
+
+    private var retryNum = 0
+
+    override fun intercept(chain: Interceptor.Chain?): Response {
+
+        chain?.let {
+            val request = it.request()
+            var response = it.proceed(request)
+
+            while (!response.isSuccessful && retryNum < maxRetryNum) {
+                retryNum++
+                Log.e("tx", "retry:$retryNum")
+                response = it.proceed(request)
+            }
+            return response
+        }
+        throw IOException()
+    }
 }
