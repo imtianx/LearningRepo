@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply from:'../test-deps.gradle'
+apply from: '../test-deps.gradle'
 
 android {
     compileSdkVersion build_version.compile_sdk
@@ -36,17 +36,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }
 
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     implementation deps.kotlin.stdlib
+    implementation deps.kotlin.anko
+    implementation deps.kotlin.anko_common
+
     implementation deps.support.app_compat_v7
     implementation deps.support.constraint_layout
     implementation deps.support.recyclerview_v7
+
     kapt deps.databinding_compile
+
+    implementation deps.retrofit2.retrofit
+    implementation deps.retrofit2.converter_gson
+    implementation deps.retrofit2.adapter_rxjava2
+
+    implementation deps.rx.rxjava2
+    implementation deps.rx.rxandroid
 
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 }
+
+
+
