@@ -1,9 +1,14 @@
 package cn.imtianx.common.net.converter
 
 import com.google.gson.Gson
+import com.google.gson.JsonElement
 import com.google.gson.TypeAdapter
 import com.google.gson.TypeAdapterFactory
 import com.google.gson.reflect.TypeToken
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonWriter
+import java.io.IOException
+
 
 /**
  * <pre>
@@ -12,11 +17,44 @@ import com.google.gson.reflect.TypeToken
  * @author 奚岩
  * @date 2018/5/31 2:04 PM
  */
-class RespTypeAdapterFactory : TypeAdapterFactory{
+class RespTypeAdapterFactory : TypeAdapterFactory {
 
-    override fun <T : Any?> create(gson: Gson?, type: TypeToken<T>?): TypeAdapter<T> {
+    override fun <T : Any?> create(gson: Gson, type: TypeToken<T>): TypeAdapter<T> {
 
+        val delegate = gson.getDelegateAdapter(this, type)
+        val elementAdapter = gson.getAdapter(JsonElement::class.java)
 
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return object : TypeAdapter<T>() {
+
+            @Throws(IOException::class)
+            override fun write(out: JsonWriter, value: T) {
+                return delegate.write(out, value)
+            }
+
+            @Throws(IOException::class)
+            override fun read(`in`: JsonReader): T {
+                var jsonElement = elementAdapter.read(`in`)
+                if (jsonElement.isJsonObject) {
+                    val jsonObject = jsonElement.asJsonObject
+
+                    if (jsonObject.has("status")) {
+                        // todo exception deal
+                        if (jsonObject.has("data")) {
+                            jsonElement = jsonObject.get("data")
+
+                            val contentArray = jsonElement.asJsonArray
+                            if (contentArray.size() == 1) {
+                                jsonElement = contentArray.get(0)
+                            }
+
+                        }
+                    }
+                }
+                return delegate.fromJsonTree(jsonElement)
+            }
+
+        }.nullSafe()
+
     }
 }
+

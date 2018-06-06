@@ -22,7 +22,7 @@ open class BaseRepository {
     }
 
     protected fun <T> performResponData(observable: Observable<T>): MutableLiveData<RespResult<T>> {
-        var liveData = MutableLiveData<RespResult<T>>()
+        val liveData = MutableLiveData<RespResult<T>>()
 
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

@@ -3,8 +3,10 @@ package cn.imtianx.common.net
 import cn.imtianx.common.net.converter.RespTypeAdapterFactory
 import cn.imtianx.common.net.interceptor.RetryInterceptor
 import com.google.gson.GsonBuilder
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -20,8 +22,7 @@ class HttpRequestClient private constructor() {
     fun getRetrofit(): Retrofit {
 
         val okHttpClient = OkHttpClient.Builder()
-                .readTimeout(10, TimeUnit.SECONDS)
-                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 .addInterceptor(RetryInterceptor())
                 .build()
@@ -31,10 +32,10 @@ class HttpRequestClient private constructor() {
                 .create()
 
         return Retrofit.Builder()
-                .baseUrl("http://192.168.7.16:8081/ksbapi")
+                .baseUrl("http://192.168.2.107:8080")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .validateEagerly(true)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
 
     }
