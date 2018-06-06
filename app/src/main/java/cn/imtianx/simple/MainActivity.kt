@@ -30,17 +30,19 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
         }
 
         btn_retrofit_timeout.onClick {
-            Log.e("imtianx", "当前时间:" + System.currentTimeMillis())
-            viewModel.timeOutResult.observe(this@MainActivity, Observer {
-                it?.applyActionWithNetworkData(
-                        {
-                            Log.e("tx", "时间：${System.currentTimeMillis()}    success: ${it}")
-                        }, { msg, code ->
-                    Log.e("tx", "时间：${System.currentTimeMillis()}    error: $msg  code:$code")
-                }
-                )
-            })
+            viewModel.fetchTimeout()
+            Log.e("tx", "当前时间:" + System.currentTimeMillis())
         }
+
+        viewModel.timeOutResult.observe(this@MainActivity, Observer {
+            it?.applyActionWithNetworkData(
+                    {
+                        Log.e("tx", "时间：${System.currentTimeMillis()}    success: ${it}")
+                    }, { msg, code ->
+                Log.e("tx", "时间：${System.currentTimeMillis()}    error: $msg  code:$code")
+            }
+            )
+        })
     }
 
 }

@@ -21,10 +21,11 @@ class RetryInterceptor(var maxRetryNum: Int = 3) : Interceptor {
         chain?.let {
             val request = it.request()
             var response = it.proceed(request)
-
+            println("retry-----:$retryNum")
             while (!response.isSuccessful && retryNum < maxRetryNum) {
                 retryNum++
                 Log.e("tx", "retry:$retryNum")
+                println("retry:$retryNum")
                 response = it.proceed(request)
             }
             return response

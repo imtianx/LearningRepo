@@ -17,7 +17,7 @@ class RespResult<out T>(val code: Int = RESP_CODE_SUCCESS, val msg: String? = nu
 
 
         fun <T> success(data: T?): RespResult<T> {
-            return success(data)
+            return RespResult(RESP_CODE_SUCCESS, "success", data)
         }
 
         fun <T> failed(msg: String?, code: Int = RESP_CODE_ERROR): RespResult<T> {

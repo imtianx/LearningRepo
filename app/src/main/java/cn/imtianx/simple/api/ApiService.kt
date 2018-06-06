@@ -2,6 +2,7 @@ package cn.imtianx.simple.api
 
 import io.reactivex.Observable
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 /**
@@ -13,8 +14,10 @@ import retrofit2.http.POST
  */
 interface ApiService {
 
-    @POST("/testTimeout")
-    @FormUrlEncoded
+    @GET("/testTimeout")
     fun testTimeout(): Observable<String>
+
+    @GET("/article/list/0/json")
+    fun testWan(): Observable<String>
 
 }

@@ -22,7 +22,8 @@ class HttpRequestClient private constructor() {
     fun getRetrofit(): Retrofit {
 
         val okHttpClient = OkHttpClient.Builder()
-                .readTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(15,TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 .addInterceptor(RetryInterceptor())
                 .build()
@@ -32,7 +33,7 @@ class HttpRequestClient private constructor() {
                 .create()
 
         return Retrofit.Builder()
-                .baseUrl("http://192.168.2.107:8080")
+                .baseUrl("http://192.168.3.248:8080")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
