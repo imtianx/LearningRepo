@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
-
-
 
     defaultConfig {
         applicationId "cn.imtianx.mdsimple"
@@ -24,6 +23,15 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
+    // Unresolved reference: BR
+    kapt {
+        generateStubs = true
+    }
+
 }
 
 dependencies {
@@ -36,8 +44,15 @@ dependencies {
     implementation deps.support.app_compat_v7
     implementation deps.support.constraint_layout
 
+    kapt deps.databinding_compile
+
     implementation deps.support.design
     implementation deps.support.cardview
 
 
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }
