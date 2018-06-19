@@ -49,7 +49,6 @@ dependencies {
     implementation deps.support.design
     implementation deps.support.cardview
 
-
 }
 kotlin {
     experimental {

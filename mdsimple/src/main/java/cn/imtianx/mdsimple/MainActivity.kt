@@ -17,5 +17,9 @@ class MainActivity : AppCompatActivity() {
         btn_1.onClick {
             startActivity<Test1Activity>()
         }
+
+        btn_2.onClick {
+            startActivity<Test2Activity>()
+        }
     }
 }

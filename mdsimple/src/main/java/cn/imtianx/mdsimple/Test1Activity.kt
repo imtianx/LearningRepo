@@ -25,7 +25,7 @@ class Test1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityTest1Binding>(this, R.layout.activity_test_1)
         setSupportActionBar(toolbar)
-        title = "fab滚动"
+        title = "fab滚动-scroll listener"
 
 
         for (i in 0..40) {
@@ -60,7 +60,6 @@ class Test1Activity : AppCompatActivity() {
         })
 
     }
-
 
     private fun hideFab() {
 

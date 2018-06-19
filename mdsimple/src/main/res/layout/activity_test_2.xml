@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+    
+    </data>
+    
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_test_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingTop="?attr/actionBarSize">
+        
+        </android.support.v7.widget.RecyclerView>
+        
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary">
+        
+        </android.support.v7.widget.Toolbar>
+        
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="fabClickEvent"
+            android:src="@drawable/ic_add_white_24dp"
+            app:layout_behavior="cn.imtianx.mdsimple.FabBehavior"/>
+    
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

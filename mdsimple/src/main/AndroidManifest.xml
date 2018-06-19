@@ -19,7 +19,10 @@
         
         <activity
             android:name=".Test1Activity"
-            android:label="fab滚动"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        
+        <activity
+            android:name=".Test2Activity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
