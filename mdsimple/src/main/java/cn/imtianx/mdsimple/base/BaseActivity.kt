@@ -2,6 +2,9 @@ package cn.imtianx.mdsimple.base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
+import android.view.MenuItem
+import cn.imtianx.mdsimple.R
 
 /**
  * <pre>
@@ -17,10 +20,34 @@ abstract class BaseActivity : AppCompatActivity() {
 
         initWindows()
 
+        initToolbar(findViewById(R.id.toolbar))
+
         initWidget()
 
         initData()
 
+    }
+
+    private fun initToolbar(toolbar: Toolbar?) {
+        toolbar?.let {
+            setSupportActionBar(it)
+            supportActionBar?.run {
+                setDisplayHomeAsUpEnabled(true)
+                setHomeButtonEnabled(true)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> {
+                false
+            }
+        }
     }
 
     abstract fun getContentLayoutId(): Int

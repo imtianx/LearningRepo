@@ -1,6 +1,5 @@
 package cn.imtianx.mdsimple
 
-import cn.imtianx.MainViewModel
 import cn.imtianx.mdsimple.base.BaseDataBindingActivity
 import cn.imtianx.mdsimple.base.getViewModel
 import cn.imtianx.mdsimple.databinding.ActivityMainBinding

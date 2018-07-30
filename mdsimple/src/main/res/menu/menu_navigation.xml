@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navi_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="首页"/>
+    
+    <!--<item-->
+    <!--android:id="@+id/navi_order"-->
+    <!--android:icon="@drawable/ic_view_list_black_24dp"-->
+    <!--android:title="订单"/>-->
+    
+    <item
+        android:id="@+id/navi_cart"
+        android:icon="@drawable/ic_local_grocery_store_black_24dp"
+        android:title="购物车"/>
+    
+    <item
+        android:id="@+id/navi_mine"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="我的"/>
+</menu>
