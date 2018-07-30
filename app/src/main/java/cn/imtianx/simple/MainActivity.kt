@@ -59,6 +59,7 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
         btn_coroutine.onClick {
             //            testCoroutine()
             exectors.shutdownNow()
+//            RaisePriorityActivity.launch(this@MainActivity)
         }
     }
 

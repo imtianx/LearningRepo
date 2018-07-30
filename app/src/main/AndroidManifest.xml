@@ -21,6 +21,21 @@
         <activity
             android:name=".ui.databinding.DataBindingActivity"
             android:label="DataBinding双向绑定"/>
+        <activity
+            android:name=".raisepriority.RaisePriorityActivity"
+            android:label="进程守护"/>
+        
+        <service
+            android:name=".raisepriority.NormalService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":normal"/>
+        
+        <service
+            android:name=".raisepriority.HighPriorityService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":high"/>
     </application>
 
 </manifest>

@@ -24,4 +24,9 @@ class ExampleUnitTest {
         println(Gson().toJson(data))
     }
 
+    @Test
+    fun testTemp() {
+        println("""android.app.ActivityThread${"$"}H""")
+    }
+
 }
