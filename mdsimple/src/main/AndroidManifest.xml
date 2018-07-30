@@ -18,11 +18,17 @@
         </activity>
         
         <activity
-            android:name=".Test1Activity"
+            android:name=".behavior.FabScrollListenerActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         
         <activity
-            android:name=".Test2Activity"
+            android:name=".behavior.FabCustomBehaviorActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        
+        
+        <activity
+            android:name=".navigation.NavigationActivity"
+            android:label="navigation"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

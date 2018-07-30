@@ -4,6 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools">
     
     <data>
+        
+        <variable
+            name="viewModel"
+            type="cn.imtianx.MainViewModel"/>
     
     </data>
     
@@ -16,7 +20,9 @@
             android:id="@+id/btn_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.jump2FabScroll(context)}"
             android:text="fab滚动"
+            android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -25,7 +31,9 @@
             android:id="@+id/btn_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.jump2FabCustomBehavior(context)}"
             android:text="fab滚动-behavior"
+            android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_1"/>

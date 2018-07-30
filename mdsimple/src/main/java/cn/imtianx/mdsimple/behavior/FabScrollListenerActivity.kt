@@ -1,29 +1,33 @@
-package cn.imtianx.mdsimple
+package cn.imtianx.mdsimple.behavior
 
-import android.databinding.DataBindingUtil
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.widget.RelativeLayout
-import cn.imtianx.mdsimple.databinding.ActivityTest1Binding
-import kotlinx.android.synthetic.main.activity_test_1.*
+import cn.imtianx.mdsimple.R
+import cn.imtianx.mdsimple.base.BaseDataBindingActivity
+import cn.imtianx.mdsimple.databinding.ActivityFabScrollBinding
+import kotlinx.android.synthetic.main.activity_fab_scroll.*
 
 /**
  * <pre>
- *     @desc:
+ *     @desc: 隐藏behavior--滚动监听
  * </pre>
  * @author 奚岩
  * @date 2018/6/14 8:36 PM
  */
-class Test1Activity : AppCompatActivity() {
+class FabScrollListenerActivity : BaseDataBindingActivity<ActivityFabScrollBinding>() {
+
     private val datas = mutableListOf<String>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<ActivityTest1Binding>(this, R.layout.activity_test_1)
+    override fun getContentLayoutId(): Int {
+        return R.layout.activity_fab_scroll
+    }
+
+    override fun initWidget() {
+        super.initWidget()
         setSupportActionBar(toolbar)
         title = "fab滚动-scroll listener"
 
@@ -66,18 +70,24 @@ class Test1Activity : AppCompatActivity() {
         toolbar.animate()
                 .translationY((-fab.height).toFloat()).interpolator = AccelerateInterpolator(3.0f)
 
-        val lp = fab.layoutParams as RelativeLayout.LayoutParams
-        fab.animate()
-                .translationY((fab.height + lp.bottomMargin).toFloat()).interpolator = AccelerateInterpolator(3.0f)
+        // fab scale x and y
+        fab.animate().scaleX(0f).scaleY(0f).start()
 
     }
 
     private fun showFab() {
-        fab.animate()
-                .translationY(0f).interpolator = DecelerateInterpolator(3.0f)
 
         toolbar.animate()
                 .translationY(0f).interpolator = DecelerateInterpolator(3.0f)
 
+        // fab scale x and y
+        fab.animate().scaleX(1f).scaleY(1f).start()
+
+    }
+
+    companion object {
+        fun launch(context: Context) {
+            context.startActivity(Intent(context, FabScrollListenerActivity::class.java))
+        }
     }
 }

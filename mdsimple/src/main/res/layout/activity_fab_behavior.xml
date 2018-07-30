@@ -60,7 +60,7 @@
             android:backgroundTint="@color/colorAccent"
             android:onClick="fabClickEvent"
             android:src="@drawable/ic_add_white_24dp"
-            app:layout_behavior="cn.imtianx.mdsimple.FabBehavior"/>
+            app:layout_behavior="cn.imtianx.mdsimple.behavior.FabBehavior"/>
     
     </android.support.design.widget.CoordinatorLayout>
 </layout>

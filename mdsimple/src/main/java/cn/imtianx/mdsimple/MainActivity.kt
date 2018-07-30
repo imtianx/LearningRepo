@@ -1,25 +1,29 @@
 package cn.imtianx.mdsimple
 
-import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import cn.imtianx.MainViewModel
+import cn.imtianx.mdsimple.base.BaseDataBindingActivity
+import cn.imtianx.mdsimple.base.getViewModel
 import cn.imtianx.mdsimple.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.startActivity
 
-class MainActivity : AppCompatActivity() {
+/**
+ * <pre>
+ *     @desc: main
+ * </pre>
+ * @author 奚岩
+ * @date 2018/6/14 11:20 PM
+ */
+class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+    override fun getContentLayoutId(): Int {
+        return R.layout.activity_main
+    }
 
-        btn_1.onClick {
-            startActivity<Test1Activity>()
-        }
+    private val viewModel: MainViewModel by lazy {
+        getViewModel(MainViewModel::class.java)
+    }
 
-        btn_2.onClick {
-            startActivity<Test2Activity>()
-        }
+    override fun initWidget() {
+        super.initWidget()
+        binding.viewModel = viewModel
     }
 }
