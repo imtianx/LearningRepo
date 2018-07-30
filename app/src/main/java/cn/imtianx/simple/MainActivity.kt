@@ -10,9 +10,17 @@ import cn.imtianx.simple.databinding.ActivityMainBinding
 import cn.imtianx.simple.ui.databinding.DataBindingActivity
 import cn.imtianx.simple.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.experimental.android.UI
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import java.util.concurrent.Executors
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
+
+    private lateinit var exectors: ThreadPoolExecutor
 
     private val viewModel: MainViewModel by lazy {
         getViewModel(MainViewModel::class.java)
@@ -24,14 +32,18 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
     override fun initWidget() {
         super.initWidget()
+
+
         btn_data_binding.onClick {
             startActivity(Intent(this@MainActivity,
                     DataBindingActivity::class.java))
         }
 
         btn_retrofit_timeout.onClick {
-            viewModel.fetchTimeout()
-            Log.e("tx", "当前时间:" + System.currentTimeMillis())
+            //            viewModel.fetchTimeout()
+//            Log.e("tx", "当前时间:" + System.currentTimeMillis())
+
+            initThread()
         }
 
         viewModel.timeOutResult.observe(this@MainActivity, Observer {
@@ -43,6 +55,59 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
             }
             )
         })
+
+        btn_coroutine.onClick {
+            //            testCoroutine()
+            exectors.shutdownNow()
+        }
     }
 
+
+    private fun testCoroutine() {
+
+
+        val job1 = launch(CommonPool, CoroutineStart.LAZY) {
+            println("job1---------currentThreadId:${Thread.currentThread().id}")
+            var count = 0
+            while (true) {
+                count++
+                delay(500)
+                println("count--------: $count")
+            }
+        }
+
+        val job2 = async(CommonPool) {
+            println("job2-------currentThreadId:${Thread.currentThread().id}")
+            job1.start()
+            "job2         currentThreadId:${Thread.currentThread().id}"
+        }
+
+        launch(UI) {
+            println("ui------------currentThreadId:${Thread.currentThread().id}")
+            delay(3000)
+            job1.cancel()
+            println(job2.await())
+
+        }
+    }
+
+    private fun initThread() {
+        exectors = ThreadPoolExecutor(1, 1, 10, TimeUnit.MILLISECONDS,
+                LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
+                ThreadPoolExecutor.AbortPolicy())
+
+
+        exectors.execute(CRunnable())
+        exectors.execute(CRunnable())
+    }
+
+}
+
+
+class CRunnable : Runnable {
+    override fun run() {
+        println("ThreadOne id : ${Thread.currentThread().id}")
+        Thread.sleep(3000)
+        println("ThreadOne  执行完成")
+    }
 }

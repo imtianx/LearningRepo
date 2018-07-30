@@ -66,6 +66,8 @@ dependencies {
     implementation deps.rx.rxandroid
 
     implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.4"
 }
 
 
