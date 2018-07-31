@@ -12,6 +12,30 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@android:color/white</item>
     </style>
+    
+    <style name="AppTheme.ToolBar" parent="AppTheme.NoActionBar">
+        <!--menu 在 toolbar上的颜色-->
+        <item name="actionMenuTextColor">@android:color/white</item>
+        
+        <!--toolbar 溢出惨淡默认图标-->
+        <item name="android:actionOverflowButtonStyle">@style/OverFlowIcon</item>
+        
+        <!--溢出菜单背景颜色-->
+        <item name="android:itemBackground">@color/colorAccent</item>
+        <!--溢出菜单文字颜色-->
+        <item name="android:textColor">@android:color/white</item>
+        <!--溢出菜单文字大小-->
+        <item name="android:textSize">20sp</item>
+        <!--溢出菜单是否显示在toolbar上，默认是true-->
+        <item name="overlapAnchor">false</item>
+    
+    </style>
+    
+    <style name="OverFlowIcon" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_favorite_black_24dp</item>
+    </style>
+
 
 </resources>
