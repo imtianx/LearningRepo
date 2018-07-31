@@ -12,10 +12,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@android:color/white</item>
     </style>
     
     <style name="AppTheme.ToolBar" parent="AppTheme.NoActionBar">
+        
+        <!--toolbar 图标颜色-->
+        <item name="colorControlNormal">@android:color/white</item>
         <!--menu 在 toolbar上的颜色-->
         <item name="actionMenuTextColor">@android:color/white</item>
         

@@ -30,6 +30,9 @@
             android:name=".navigation.NavigationActivity"
             android:label="navigation"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".navigation.SearchViewActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

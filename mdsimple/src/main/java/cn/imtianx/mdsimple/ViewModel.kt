@@ -5,6 +5,7 @@ import cn.imtianx.mdsimple.behavior.FabScrollListenerActivity
 import cn.imtianx.mdsimple.behavior.FabCustomBehaviorActivity
 import cn.imtianx.mdsimple.base.BaseViewModel
 import cn.imtianx.mdsimple.navigation.NavigationActivity
+import cn.imtianx.mdsimple.navigation.SearchViewActivity
 
 /**
  * <pre>
@@ -18,6 +19,9 @@ class MainViewModel : BaseViewModel() {
 
     fun jump2Navigsation(context: Context) {
         NavigationActivity.launch(context)
+    }
+    fun jump2SearchView(context: Context) {
+        SearchViewActivity.launch(context)
     }
 
     fun jump2FabScroll(context: Context) {
