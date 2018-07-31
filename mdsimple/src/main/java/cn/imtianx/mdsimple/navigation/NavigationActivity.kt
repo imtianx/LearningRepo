@@ -27,10 +27,15 @@ class NavigationActivity : BaseDataBindingActivity<ActivityNavigationBinding>() 
 
         setSupportActionBar(toolbar)
 
+        NavigationViewHelper.disableShiftingMode(navigation_view)
+
         navigation_view.setOnNavigationItemSelectedListener { item ->
 
             when (item.itemId) {
                 R.id.navi_home -> {
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.navi_order -> {
                     return@setOnNavigationItemSelectedListener true
                 }
 
