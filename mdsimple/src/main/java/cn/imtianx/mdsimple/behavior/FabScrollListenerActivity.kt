@@ -37,7 +37,7 @@ class FabScrollListenerActivity : BaseDataBindingActivity<ActivityFabScrollBindi
         }
 
         rv_test_1.layoutManager = LinearLayoutManager(this)
-        rv_test_1.adapter = Test1Adapter(datas)
+        rv_test_1.adapter = FabAdapter(datas)
 
         rv_test_1.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 

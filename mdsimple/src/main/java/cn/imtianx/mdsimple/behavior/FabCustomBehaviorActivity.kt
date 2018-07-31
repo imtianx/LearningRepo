@@ -36,7 +36,7 @@ class FabCustomBehaviorActivity : BaseDataBindingActivity<ActivityFabBehaviorBin
         }
 
         rv_test_2.layoutManager = LinearLayoutManager(this)
-        rv_test_2.adapter = Test1Adapter(datas)
+        rv_test_2.adapter = FabAdapter(datas)
 
     }
 

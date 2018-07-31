@@ -15,7 +15,7 @@ import cn.imtianx.mdsimple.databinding.ItemFabBinding
  * @author 奚岩
  * @date 2018/6/14 9:23 PM
  */
-class Test1Adapter(var datas: MutableList<String>) : RecyclerView.Adapter<ViewHolder>() {
+class FabAdapter(var datas: MutableList<String>) : RecyclerView.Adapter<ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val binding = DataBindingUtil
