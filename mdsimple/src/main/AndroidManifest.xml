@@ -36,6 +36,14 @@
             android:name=".navigation.SearchViewActivity"
             android:label="searchView"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".appbar.AppbarActivity"
+            android:label="Appbar"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".appbar.AppbarCollapsingActivity"
+            android:label="Appbar-Collapsing"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
