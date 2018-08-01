@@ -33,12 +33,17 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun initToolbar(toolbar: Toolbar?) {
         toolbar?.let {
             setSupportActionBar(it)
-            supportActionBar?.run {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeButtonEnabled(true)
+            if (isShowBack) {
+                supportActionBar?.run {
+                    setDisplayHomeAsUpEnabled(true)
+                    setHomeButtonEnabled(true)
+                }
             }
         }
     }
+
+
+    protected var isShowBack = true
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

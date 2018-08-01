@@ -3,8 +3,6 @@ package cn.imtianx.mdsimple.navigation
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
@@ -12,7 +10,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import cn.imtianx.mdsimple.R
-import kotlinx.android.synthetic.main.activity_search_view.*
+import cn.imtianx.mdsimple.base.BaseActivity
+import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.hintTextColor
 import org.jetbrains.anko.textColor
 
@@ -23,33 +22,53 @@ import org.jetbrains.anko.textColor
  * @author 奚岩
  * @date 2018/7/31 9:04 PM
  */
-class SearchViewActivity : AppCompatActivity() {
+class SearchViewActivity : BaseActivity() {
 
 
     private var searchAutoComplete: SearchView.SearchAutoComplete? = null
     private lateinit var searchView: SearchView
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_view)
-        setSupportActionBar(toolbar)
+    override fun getContentLayoutId(): Int {
+        return R.layout.activity_search_view
+    }
 
-        // 返回监听：有输入内容时关闭，否则直接finish
-        toolbar.setNavigationOnClickListener {
-
-            searchAutoComplete?.let {
-                if (it.isShown) {
-                    it.setText("")
-                    val onCloseClicked = searchView.javaClass.getDeclaredMethod("onCloseClicked")
-                    onCloseClicked.isAccessible = true
-                    onCloseClicked.invoke(searchView)
-                    return@setNavigationOnClickListener
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // back
+                onBackEvent()
+                true
+            }
+            R.id.menu_toolbar_share -> {
+                // menu item
+                Toast.makeText(this, "share", Toast.LENGTH_SHORT).show()
+                true
             }
 
-            finish()
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
+    }
+
+    // 返回，searchView若显示则关闭，否则退出页面
+    private fun onBackEvent() {
+        searchAutoComplete?.let {
+            if (it.isShown) {
+                it.setText("")
+                val onCloseClicked = searchView::class.java
+                        .getDeclaredMethod("onCloseClicked")
+                onCloseClicked.isAccessible = true
+                onCloseClicked.invoke(searchView)
+                return
+            }
+        }
+        finish()
+    }
+
+    override fun onBackPressed() {
+        onBackEvent()
     }
 
 
@@ -81,8 +100,10 @@ class SearchViewActivity : AppCompatActivity() {
             submitIcon.setImageResource(R.drawable.ic_done_black_24dp)
             submitIcon.visibility = View.VISIBLE
 
+            // 设置输入提示1，会显示搜索 图标
+//            searchView.queryHint = "请输入商品名称"
 
-            // 输入提示文本
+            // 设置输入提示2，可以设置提示文本的样式
             searchAutoComplete = searchView.findViewById(R.id.search_src_text)
             searchAutoComplete!!.apply {
                 hint = "请输入商品名称"
@@ -99,6 +120,7 @@ class SearchViewActivity : AppCompatActivity() {
 
             searchView.setOnCloseListener {
                 toolbar.title = "SearchView"
+                Toast.makeText(this@SearchViewActivity, "isIconified:${searchView.isIconified}", Toast.LENGTH_SHORT).show()
                 return@setOnCloseListener false
             }
 
@@ -110,7 +132,6 @@ class SearchViewActivity : AppCompatActivity() {
                     searchView.clearFocus()
                     searchView.onActionViewCollapsed()
                     toolbar.title = "SearchView"
-
                     return false
                 }
 
@@ -123,18 +144,6 @@ class SearchViewActivity : AppCompatActivity() {
         }
 
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        item?.let {
-
-            if (it.itemId == R.id.menu_toolbar_share) {
-                Toast.makeText(this, "share", Toast.LENGTH_SHORT).show()
-                return true
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 
 

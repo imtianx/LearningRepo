@@ -2,6 +2,7 @@ package cn.imtianx.mdsimple.navigation
 
 import android.content.Context
 import android.content.Intent
+import android.support.v7.view.menu.MenuBuilder
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -10,6 +11,7 @@ import cn.imtianx.mdsimple.R
 import cn.imtianx.mdsimple.base.BaseDataBindingActivity
 import cn.imtianx.mdsimple.databinding.ActivityNavigationBinding
 import kotlinx.android.synthetic.main.activity_navigation.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
  * <pre>
@@ -93,6 +95,26 @@ class NavigationActivity : BaseDataBindingActivity<ActivityNavigationBinding>() 
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.let {
+            if (it::class.java == MenuBuilder::class.java) {
+                try {
+
+                    // 反射 设置 menu icon 可见
+                    it::class.java.getDeclaredMethod("setOptionalIconsVisible",
+                            java.lang.Boolean.TYPE).apply {
+                        isAccessible = true
+                        invoke(it, true)
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+
+        return super.onPrepareOptionsMenu(menu)
     }
 
     companion object {
