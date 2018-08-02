@@ -25,11 +25,17 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
     override fun initWindows() {
         super.initWindows()
         isShowBack = false
+        /**
+         * 1.若设置居中标题，需手动设置toolbar 的titile 为空，并且如果使用了 setSupportActionBar方法，需在其之前设置
+         * 2.若该activity 为启动类，不能在 manifests 中对应的 activity 设置 label 属性，若设置为空或者其他值，会改变app 桌面显示名称
+         */
+        toolbar.title = ""
     }
 
     override fun initWidget() {
         super.initWidget()
         binding.viewModel = viewModel
+        // 设置居中标题
         tvTitle.text = resources.getString(R.string.app_name)
     }
 }
