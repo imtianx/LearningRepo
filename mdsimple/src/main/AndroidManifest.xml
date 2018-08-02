@@ -44,6 +44,11 @@
             android:name=".appbar.AppbarCollapsingActivity"
             android:label="Appbar-Collapsing"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".bottomsheet.BottomSheetDialogActivity"
+            android:label="BottomSheet"
+            android:theme="@style/AppTheme.NoActionBar"/>
+    
     </application>
 
 </manifest>

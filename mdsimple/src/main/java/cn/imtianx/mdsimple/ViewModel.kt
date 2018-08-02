@@ -6,6 +6,7 @@ import cn.imtianx.mdsimple.appbar.AppbarCollapsingActivity
 import cn.imtianx.mdsimple.behavior.FabScrollListenerActivity
 import cn.imtianx.mdsimple.behavior.FabCustomBehaviorActivity
 import cn.imtianx.mdsimple.base.BaseViewModel
+import cn.imtianx.mdsimple.bottomsheet.BottomSheetDialogActivity
 import cn.imtianx.mdsimple.navigation.NavigationActivity
 import cn.imtianx.mdsimple.navigation.SearchViewActivity
 
@@ -33,6 +34,10 @@ class MainViewModel : BaseViewModel() {
 
     fun jump2AppbarCollapsing(context: Context) {
         AppbarCollapsingActivity.launch(context)
+    }
+
+    fun jump2BottomSheetDialog(context: Context) {
+        BottomSheetDialogActivity.launch(context)
     }
 
     fun jump2FabScroll(context: Context) {
