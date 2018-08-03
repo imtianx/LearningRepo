@@ -9,6 +9,7 @@ import cn.imtianx.mdsimple.base.BaseViewModel
 import cn.imtianx.mdsimple.bottomsheet.BottomSheetDialogActivity
 import cn.imtianx.mdsimple.navigation.NavigationActivity
 import cn.imtianx.mdsimple.navigation.SearchViewActivity
+import cn.imtianx.mdsimple.tablayout.TabLayoutActivity
 
 /**
  * <pre>
@@ -20,7 +21,7 @@ import cn.imtianx.mdsimple.navigation.SearchViewActivity
 
 class MainViewModel : BaseViewModel() {
 
-    fun jump2Navigsation(context: Context) {
+    fun jump2Navigation(context: Context) {
         NavigationActivity.launch(context)
     }
 
@@ -34,6 +35,10 @@ class MainViewModel : BaseViewModel() {
 
     fun jump2AppbarCollapsing(context: Context) {
         AppbarCollapsingActivity.launch(context)
+    }
+
+    fun jump2TabLayout(context: Context) {
+        TabLayoutActivity.launch(context)
     }
 
     fun jump2BottomSheetDialog(context: Context) {

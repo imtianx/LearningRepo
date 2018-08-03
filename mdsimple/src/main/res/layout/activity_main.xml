@@ -70,6 +70,13 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{()->viewModel.jump2TabLayout(context)}"
+                    android:text="TabLayout"
+                    android:textAllCaps="false"/>
+                
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:onClick="@{()->viewModel.jump2BottomSheetDialog(context)}"
                     android:text="BottomSheetDialog"
                     android:textAllCaps="false"/>
