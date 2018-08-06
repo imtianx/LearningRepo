@@ -9,6 +9,7 @@ import cn.imtianx.mdsimple.base.BaseViewModel
 import cn.imtianx.mdsimple.bottomsheet.BottomSheetDialogActivity
 import cn.imtianx.mdsimple.navigation.NavigationActivity
 import cn.imtianx.mdsimple.navigation.SearchViewActivity
+import cn.imtianx.mdsimple.palette.PaletteActivity
 import cn.imtianx.mdsimple.tablayout.TabLayoutActivity
 
 /**
@@ -43,6 +44,10 @@ class MainViewModel : BaseViewModel() {
 
     fun jump2BottomSheetDialog(context: Context) {
         BottomSheetDialogActivity.launch(context)
+    }
+
+    fun jump2Palette(context: Context) {
+        PaletteActivity.launch(context)
     }
 
     fun jump2FabScroll(context: Context) {

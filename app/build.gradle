@@ -48,7 +48,7 @@ kotlin {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.stdlib_jdk7
     implementation deps.kotlin.anko
     implementation deps.kotlin.anko_common
 

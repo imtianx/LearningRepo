@@ -33,6 +33,8 @@ versions.rxbinding2 = "2.1.1"
 versions.databinding_compile = "3.1.3"
 versions.glide = "4.4.4"
 
+ext.versions = versions
+
 def deps = [:]
 
 def support = [:]
@@ -59,7 +61,8 @@ deps.test = test
 
 
 def kotlin = [:]
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.stdlib_jre7 = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.stdlib_jdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 kotlin.test_junit = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 kotlin.anko = "org.jetbrains.anko:anko:$versions.anko_version"
