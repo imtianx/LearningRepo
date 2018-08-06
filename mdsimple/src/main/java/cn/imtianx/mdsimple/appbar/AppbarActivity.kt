@@ -27,7 +27,7 @@ class AppbarActivity : BaseActivity() {
         //  app:layout_scrollFlags="scroll"
 //        setToolbarScrollFlag(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL)
 
-        //  app:layout_scrollFlags="scroll|enterAlways"
+//          app:layout_scrollFlags="scroll|enterAlways"
         setToolbarScrollFlag(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL xor
                 AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS)
 

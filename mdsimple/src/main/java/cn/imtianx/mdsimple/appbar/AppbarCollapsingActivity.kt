@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.support.design.widget.Snackbar
 import android.view.View
 import cn.imtianx.mdsimple.R
 import cn.imtianx.mdsimple.base.BaseActivity
@@ -31,6 +32,10 @@ class AppbarCollapsingActivity : BaseActivity() {
             window.statusBarColor = Color.TRANSPARENT
 
         }
+    }
+
+    fun fabClickEvent(view: View) {
+        Snackbar.make(view, "fab is clicked", Snackbar.LENGTH_SHORT).show()
     }
 
 

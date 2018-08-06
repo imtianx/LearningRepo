@@ -14,7 +14,7 @@ import android.view.View
  * @author 奚岩
  * @date 2018/6/14 10:35 PM
  */
-class FabBehavior(context: Context, attrs: AttributeSet) : FloatingActionButton.Behavior() {
+class FabBehavior(context: Context, attrs: AttributeSet) : FloatingActionButton.Behavior(context,attrs) {
     private var isVisible = true
 
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout,

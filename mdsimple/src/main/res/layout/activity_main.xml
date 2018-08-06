@@ -101,6 +101,13 @@
                     android:onClick="@{()->viewModel.jump2FabCustomBehavior(context)}"
                     android:text="fab滚动-behavior"
                     android:textAllCaps="false"/>
+                
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->viewModel.jump2TitleBehavior(context)}"
+                    android:text="behavior-上滑渐变显示title"
+                    android:textAllCaps="false"/>
             
             </LinearLayout>
         
