@@ -59,6 +59,10 @@
         <activity
             android:name=".behavior.TitleBehaviorActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        
+        <activity
+            android:name=".behavior.HeaderContentBehaviorActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     
     </application>
 

@@ -11,9 +11,9 @@ ext.build_version = build_version
 
 ext.deps = [:]
 def versions = [:]
-versions.kotlin = "1.2.41"
+versions.kotlin = "1.2.60"
 versions.anko_version = "0.10.5"
-versions.android_gradle_plugin = "3.1.3"        // [android_gradle_plugin,databinding_compile,] must be the same
+versions.android_gradle_plugin = "3.1.4"        // [android_gradle_plugin,databinding_compile,] must be the same
 versions.support = "27.1.1"
 versions.constraint_layout = "1.1.0"
 versions.junit = "4.12"
@@ -30,7 +30,7 @@ versions.rxandroid = "2.0.1"
 versions.rxbus = "1.0.2"
 versions.rxbinding2 = "2.1.1"
 
-versions.databinding_compile = "3.1.3"
+versions.databinding_compile = "3.1.4"
 versions.glide = "4.4.4"
 
 ext.versions = versions

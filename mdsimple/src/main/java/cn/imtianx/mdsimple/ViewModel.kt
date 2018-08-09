@@ -6,6 +6,7 @@ import cn.imtianx.mdsimple.appbar.AppbarCollapsingActivity
 import cn.imtianx.mdsimple.behavior.FabScrollListenerActivity
 import cn.imtianx.mdsimple.behavior.FabCustomBehaviorActivity
 import cn.imtianx.mdsimple.base.BaseViewModel
+import cn.imtianx.mdsimple.behavior.HeaderContentBehaviorActivity
 import cn.imtianx.mdsimple.behavior.TitleBehaviorActivity
 import cn.imtianx.mdsimple.bottomsheet.BottomSheetDialogActivity
 import cn.imtianx.mdsimple.navigation.NavigationActivity
@@ -61,5 +62,9 @@ class MainViewModel : BaseViewModel() {
 
     fun jump2TitleBehavior(context: Context) {
         TitleBehaviorActivity.launch(context)
+    }
+
+    fun jump2HeaderContentBehavior(context: Context) {
+        HeaderContentBehaviorActivity.launch(context)
     }
 }

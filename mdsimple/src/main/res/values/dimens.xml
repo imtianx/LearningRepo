@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_search_init_y">150dp</dimen>
+    <dimen name="header_search_collapsed_height">50dp</dimen>
+    <dimen name="header_search_margin">16dp</dimen>
+    
+    <dimen name="header_height">200dp</dimen>
+    <dimen name="header_offset">50dp</dimen>
+</resources>

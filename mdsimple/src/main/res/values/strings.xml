@@ -3,4 +3,8 @@
     
     <string name="behavior_fab">cn.imtianx.mdsimple.behavior.FabBehavior</string>
     <string name="behavior_title">cn.imtianx.mdsimple.behavior.TitleBehavior</string>
+    
+    <string name="search_behavior_title">cn.imtianx.mdsimple.behavior.HeaderSearchBehavior</string>
+    <string name="search_behavior_content">cn.imtianx.mdsimple.behavior.ContentScrollBehavior</string>
+
 </resources>

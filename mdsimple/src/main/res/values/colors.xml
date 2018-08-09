@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     
     <color name="navi_gray">#898989</color>
+    
+    <color name="search_header_bg_start">#f90431</color>
+    <color name="search_header_bg_end">#3F51B5</color>
 </resources>

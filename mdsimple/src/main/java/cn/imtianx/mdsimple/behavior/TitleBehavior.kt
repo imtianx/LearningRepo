@@ -9,6 +9,7 @@ import android.view.View
 /**
  * <pre>
  *     @desc: Title behavior
+ *     @see: https://www.jianshu.com/p/82d18b0d18f4
  * </pre>
  * @author 奚岩
  * @date 2018/8/6 5:11 PM
