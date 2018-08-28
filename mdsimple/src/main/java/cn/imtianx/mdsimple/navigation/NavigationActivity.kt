@@ -8,6 +8,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import cn.imtianx.mdsimple.R
+import cn.imtianx.mdsimple.R.id.navigation_view
+import cn.imtianx.mdsimple.R.id.toolbar
 import cn.imtianx.mdsimple.base.BaseDataBindingActivity
 import cn.imtianx.mdsimple.databinding.ActivityNavigationBinding
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -108,7 +110,7 @@ class NavigationActivity : BaseDataBindingActivity<ActivityNavigationBinding>() 
                         isAccessible = true
                         invoke(it, true)
                     }
-                } catch (e: Exception) {
+                } catch (e: Throwable) {
                     e.printStackTrace()
                 }
             }

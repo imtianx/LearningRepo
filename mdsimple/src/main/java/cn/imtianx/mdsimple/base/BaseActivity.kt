@@ -3,10 +3,9 @@ package cn.imtianx.mdsimple.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import cn.imtianx.mdsimple.R
+import com.gyf.barlibrary.ImmersionBar
 
 /**
  * <pre>
@@ -17,9 +16,13 @@ import cn.imtianx.mdsimple.R
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+    lateinit var mImmersionBar: ImmersionBar
+    var isStatusBarDarkFont = true
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mImmersionBar = ImmersionBar.with(this)
         initWindows()
 
         initToolbar(findViewById(R.id.toolbar))
@@ -40,6 +43,13 @@ abstract class BaseActivity : AppCompatActivity() {
                 }
             }
         }
+
+        mImmersionBar.apply {
+            if (isStatusBarDarkFont) {
+                statusBarDarkFont(true, 0.2f)
+            }
+            statusBarColor(R.color.colorPrimary)
+        }.init()
     }
 
 
@@ -61,6 +71,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected open fun initWindows() {
         setContentView(getContentLayoutId())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mImmersionBar.destroy()
     }
 
     protected open fun initData() {

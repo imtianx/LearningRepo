@@ -26,7 +26,6 @@ object NavigationViewHelper {
         if (menuView.childCount > 3) {
 
             try {
-
                 // BottomNavigationMenuView.java:Row270:  ShiftingMode = mMenu.size() > 3;
                 val shiftingMode = menuView::class.java.getDeclaredField("mShiftingMode")
                 shiftingMode.apply {
@@ -48,7 +47,6 @@ object NavigationViewHelper {
             } catch (e: IllegalAccessException) {
                 Log.e("tx", "NavigationViewHelper: Unable to change value of shiftMode", e)
             }
-
         }
     }
 

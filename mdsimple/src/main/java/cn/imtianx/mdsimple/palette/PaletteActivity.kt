@@ -9,6 +9,8 @@ import android.widget.ImageView
 import cn.imtianx.mdsimple.R
 import cn.imtianx.mdsimple.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_palette.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
+import org.jetbrains.anko.backgroundColor
 
 /**
  * <pre>
@@ -27,6 +29,10 @@ class PaletteActivity : BaseActivity() {
 
     override fun initWidget() {
         super.initWidget()
+
+        mImmersionBar
+                .titleBar(toolbar)
+                .statusBarColor(R.color.colorPrimary)
 
         banner.setAdapter { _, itemView, model, _ ->
             model?.let {
@@ -55,6 +61,8 @@ class PaletteActivity : BaseActivity() {
                              */
                             it.dominantSwatch?.let {
                                 iv_bg.setBackgroundColor(it.rgb)
+                                mImmersionBar.statusBarColorInt(it.rgb).init()
+                                toolbar.backgroundColor = it.rgb
                             }
                         }
             }

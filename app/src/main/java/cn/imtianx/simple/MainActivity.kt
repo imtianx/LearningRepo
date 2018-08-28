@@ -40,9 +40,6 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
         }
 
         btn_retrofit_timeout.onClick {
-            //            viewModel.fetchTimeout()
-//            Log.e("tx", "当前时间:" + System.currentTimeMillis())
-
             initThread()
         }
 
@@ -57,15 +54,12 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
         })
 
         btn_coroutine.onClick {
-            //            testCoroutine()
             exectors.shutdownNow()
-//            RaisePriorityActivity.launch(this@MainActivity)
         }
     }
 
 
     private fun testCoroutine() {
-
 
         val job1 = launch(CommonPool, CoroutineStart.LAZY) {
             println("job1---------currentThreadId:${Thread.currentThread().id}")

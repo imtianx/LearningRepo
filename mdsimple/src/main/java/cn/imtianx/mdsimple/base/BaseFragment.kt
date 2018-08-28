@@ -1,5 +1,6 @@
 package cn.imtianx.mdsimple.base
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,8 @@ import android.view.ViewGroup
  */
 abstract class BaseFragment : Fragment() {
 
+    protected var mActivity: BaseActivity? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(getContentLayoutId(), container, false)
     }
@@ -25,6 +28,13 @@ abstract class BaseFragment : Fragment() {
         initWidget()
 
         initData()
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        mActivity = context?.let {
+            it as BaseActivity
+        }
     }
 
     protected open fun initData() {}

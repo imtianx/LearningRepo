@@ -32,6 +32,9 @@ android {
         generateStubs = true
     }
 
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
 }
 
 dependencies {
@@ -52,6 +55,7 @@ dependencies {
     implementation "com.android.support:palette-v7:${versions.support}"
 
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.1'
 
 }
 kotlin {

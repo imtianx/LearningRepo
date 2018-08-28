@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            
+            <cn.bingoogolapple.bgabanner.BGABanner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:banner_indicatorGravity="right|bottom"
+                app:banner_pageChangeDuration="1000"
+                app:banner_pointAutoPlayAble="true"
+                app:banner_transitionEffect="accordion">
+            
+            </cn.bingoogolapple.bgabanner.BGABanner>
+    
+    
+            <ImageView
+                android:id="@+id/iv_bg_tab_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_bg"/>
+            
+            <include layout="@layout/layout_placeholder"/>
+        
+        </LinearLayout>
+    
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

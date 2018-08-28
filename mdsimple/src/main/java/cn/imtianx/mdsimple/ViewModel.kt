@@ -12,6 +12,7 @@ import cn.imtianx.mdsimple.bottomsheet.BottomSheetDialogActivity
 import cn.imtianx.mdsimple.navigation.NavigationActivity
 import cn.imtianx.mdsimple.navigation.SearchViewActivity
 import cn.imtianx.mdsimple.palette.PaletteActivity
+import cn.imtianx.mdsimple.status.StatusBarMainActivity
 import cn.imtianx.mdsimple.tablayout.TabLayoutActivity
 
 /**
@@ -66,5 +67,9 @@ class MainViewModel : BaseViewModel() {
 
     fun jump2HeaderContentBehavior(context: Context) {
         HeaderContentBehaviorActivity.launch(context)
+    }
+
+     fun jump2StatusMain(context: Context) {
+        StatusBarMainActivity.launch(context)
     }
 }
