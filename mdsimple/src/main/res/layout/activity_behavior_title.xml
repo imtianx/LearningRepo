@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:scaleType="fitXY"
-                android:src="@mipmap/img"
+                android:src="@mipmap/ic_bg"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7"/>
         

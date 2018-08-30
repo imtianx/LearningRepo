@@ -22,6 +22,8 @@ import org.jetbrains.anko.startActivity
  */
 class SplashActivity : BaseActivity() {
 
+    private var isAnimationCanceled = false
+
     private lateinit var objectAnimator: ObjectAnimator
     override fun getContentLayoutId(): Int {
         return R.layout.activity_splash
@@ -43,11 +45,19 @@ class SplashActivity : BaseActivity() {
         objectAnimator = ObjectAnimator.ofFloat(ll_splash, "alpha", 0f, 1f)
                 .apply {
                     duration = 2000
+
+                    // 注意： 动画取消也会执行 onCancel 和 onEnd 方法
                     addListener(object : AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator?) {
                             super.onAnimationEnd(animation)
-                            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                            finish()
+                            if (!isAnimationCanceled) {
+                                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                                finish()
+                            }
+                        }
+                        override fun onAnimationCancel(animation: Animator?) {
+                            super.onAnimationCancel(animation)
+                            isAnimationCanceled = true
                         }
                     })
                     start()
@@ -55,7 +65,6 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        Log.e("tx", "back--------")
         objectAnimator.cancel()
         super.onBackPressed()
     }
