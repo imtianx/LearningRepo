@@ -1,8 +1,4 @@
-# Material Design 笔记(一)—Toolbar
-
-标签（空格分隔）： android
-
----
+# Material Design Notes
 
 [toc]
 
