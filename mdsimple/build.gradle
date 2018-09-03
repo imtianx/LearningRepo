@@ -3,12 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 27
-
+    compileSdkVersion  28
     defaultConfig {
         applicationId "cn.imtianx.mdsimple"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion build_version.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -39,24 +38,18 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     implementation deps.kotlin.stdlib_jdk7
     implementation deps.kotlin.anko
     implementation deps.kotlin.anko_common
     implementation deps.support.app_compat_v7
     implementation deps.support.constraint_layout
     kapt deps.databinding_compile
-
     implementation deps.support.design
     implementation deps.support.cardview
-
     implementation 'android.arch.lifecycle:extensions:1.1.1'
-
     implementation "com.android.support:palette-v7:${versions.support}"
-
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     implementation 'com.gyf.immersionbar:immersionbar:2.3.1'
-
 }
 kotlin {
     experimental {

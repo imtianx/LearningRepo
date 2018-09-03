@@ -35,29 +35,29 @@ class ContentScrollBehavior(context: Context, attrs: AttributeSet) : Coordinator
 
     private lateinit var mDependencyView: WeakReference<View>
 
-    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
-        return if (dependency != null && dependency.id == R.id.ll_search) {
-            mDependencyView = WeakReference(dependency)
-            true
-        } else {
-            false
-        }
-    }
+//    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
+//        return if (dependency != null && dependency.id == R.id.ll_search) {
+//            mDependencyView = WeakReference(dependency)
+//            true
+//        } else {
+//            false
+//        }
+//    }
 
-    override fun onDependentViewChanged(parent: CoordinatorLayout?, child: View, dependency: View): Boolean {
-
-        val resource = mDependencyView.get()!!.resources
-        val progress = 1f - Math.abs(dependency.rotationY / (dependency.height -
-                resource.getDimensionPixelOffset(R.dimen.header_offset)))
-        child.translationY = dependency.height + dependency.translationY
-
-        val scale = 1f + 0.4f * (1f - progress)
-        dependency.scaleX = scale
-        dependency.scaleY = scale
-        dependency.alpha = progress
-        return true
-
-    }
+//    override fun onDependentViewChanged(parent: CoordinatorLayout?, child: View, dependency: View): Boolean {
+//
+//        val resource = mDependencyView.get()!!.resources
+//        val progress = 1f - Math.abs(dependency.rotationY / (dependency.height -
+//                resource.getDimensionPixelOffset(R.dimen.header_offset)))
+//        child.translationY = dependency.height + dependency.translationY
+//
+//        val scale = 1f + 0.4f * (1f - progress)
+//        dependency.scaleX = scale
+//        dependency.scaleY = scale
+//        dependency.alpha = progress
+//        return true
+//
+//    }
 
     override fun onLayoutChild(parent: CoordinatorLayout, child: View, layoutDirection: Int): Boolean {
         val params = child.layoutParams as CoordinatorLayout.LayoutParams

@@ -59,7 +59,7 @@ class PaletteActivity : BaseActivity() {
                               Light:明亮的；
                               Dominant：主要的
                              */
-                            it.dominantSwatch?.let {
+                            it?.dominantSwatch?.let {
                                 iv_bg.setBackgroundColor(it.rgb)
                                 mImmersionBar.statusBarColorInt(it.rgb).init()
                                 toolbar.backgroundColor = it.rgb

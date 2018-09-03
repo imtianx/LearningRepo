@@ -3,9 +3,9 @@
 
 
 def build_version = [:]
-build_version.compile_sdk = 27
+build_version.compile_sdk = 28
 build_version.min_sdk = 14
-build_version.target_sdk = 27
+build_version.target_sdk = 28
 build_version.build_tools = "27.1.1"
 ext.build_version = build_version
 
@@ -14,7 +14,7 @@ def versions = [:]
 versions.kotlin = "1.2.60"
 versions.anko_version = "0.10.5"
 versions.android_gradle_plugin = "3.1.4"        // [android_gradle_plugin,databinding_compile,] must be the same
-versions.support = "27.1.1"
+versions.support = "28.0.0-rc01"
 versions.constraint_layout = "1.1.0"
 versions.junit = "4.12"
 versions.test_runner = "1.0.2"

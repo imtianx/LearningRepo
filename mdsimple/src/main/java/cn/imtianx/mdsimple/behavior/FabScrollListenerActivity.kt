@@ -46,9 +46,7 @@ class FabScrollListenerActivity : BaseDataBindingActivity<ActivityFabScrollBindi
             var isVisable = true
 
 
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (distance > THRESGOLD && isVisable) {
                     hideFab()
                     isVisable = false

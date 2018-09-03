@@ -2,7 +2,6 @@ package cn.imtianx.mdsimple.behavior
 
 import android.content.Context
 import android.support.design.widget.CoordinatorLayout
-import android.support.v4.widget.NestedScrollView
 import android.util.AttributeSet
 import android.view.View
 
@@ -19,9 +18,9 @@ class TitleBehavior constructor(context: Context? = null, attrs: AttributeSet? =
 
     private var deltaY = 0f
 
-    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
-        return dependency is NestedScrollView
-    }
+//    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
+//        return dependency is NestedScrollView
+//    }
 
     override fun onDependentViewChanged(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
         if (deltaY == 0f) {

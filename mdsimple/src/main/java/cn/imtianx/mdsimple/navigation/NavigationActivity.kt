@@ -8,8 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import cn.imtianx.mdsimple.R
-import cn.imtianx.mdsimple.R.id.navigation_view
-import cn.imtianx.mdsimple.R.id.toolbar
 import cn.imtianx.mdsimple.base.BaseDataBindingActivity
 import cn.imtianx.mdsimple.databinding.ActivityNavigationBinding
 import kotlinx.android.synthetic.main.activity_navigation.*
@@ -36,7 +34,7 @@ class NavigationActivity : BaseDataBindingActivity<ActivityNavigationBinding>() 
         setSupportActionBar(toolbar)
 
 
-        NavigationViewHelper.disableShiftingMode(navigation_view)
+//        NavigationViewHelper.disableShiftingMode(navigation_view)
 
         navigation_view.setOnNavigationItemSelectedListener { item ->
 

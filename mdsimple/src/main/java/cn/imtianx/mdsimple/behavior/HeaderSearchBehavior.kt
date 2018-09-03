@@ -37,41 +37,41 @@ class HeaderSearchBehavior(var context: Context, attrs: AttributeSet) : Coordina
      */
     private var argbEvaluator = ArgbEvaluator()
 
-    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
-        // return super.onLayoutChild(parent, child, layoutDirection)
+//    override fun layoutDependsOn(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
+//        // return super.onLayoutChild(parent, child, layoutDirection)
+//
+//        return if (dependency == null) {
+//            false
+//        } else {
+//            dependency.id == R.id.ll_search  // @{id = the view which using this behavior }
+//        }
+//    }
 
-        return if (dependency == null) {
-            false
-        } else {
-            dependency.id == R.id.ll_search  // @{id = the view which using this behavior }
-        }
-    }
-
-    override fun onDependentViewChanged(parent: CoordinatorLayout, child: View?, dependency: View?): Boolean {
-        // return super.onDependentViewChanged(parent, child, dependency)
-
-        return if (dependency != null && child != null) {
-
-            // set translationY
-            val process = 1f - Math.abs(dependency.translationY / (dependency.height - mSearchCollapsedHeight))
-            val translationY = (mSearchInitY - mSearchCollapsedHeight) * process
-            child.translationY = translationY
-
-            // set background color
-            val startBgColor = context.resources.getColor(R.color.search_header_bg_start)
-            val endBgColor = context.resources.getColor(R.color.search_header_bg_end)
-            dependency.setBackgroundColor(argbEvaluator.evaluate(process, endBgColor, startBgColor) as Int)
-
-            // set margin left and right
-            val params = child.layoutParams as CoordinatorLayout.LayoutParams
-            val margin = (mMargin * (3f - process)).toInt()
-            Log.e("tx", "margin:   $margin")
-            params.setMargins(margin, 0, margin, 0)
-            child.layoutParams = params
-
-            true
-        } else {
-            false
-        }
-    }
+//    override fun onDependentViewChanged(parent: CoordinatorLayout, child: View?, dependency: View?): Boolean {
+//        // return super.onDependentViewChanged(parent, child, dependency)
+//
+//        return if (dependency != null && child != null) {
+//
+//            // set translationY
+//            val process = 1f - Math.abs(dependency.translationY / (dependency.height - mSearchCollapsedHeight))
+//            val translationY = (mSearchInitY - mSearchCollapsedHeight) * process
+//            child.translationY = translationY
+//
+//            // set background color
+//            val startBgColor = context.resources.getColor(R.color.search_header_bg_start)
+//            val endBgColor = context.resources.getColor(R.color.search_header_bg_end)
+//            dependency.setBackgroundColor(argbEvaluator.evaluate(process, endBgColor, startBgColor) as Int)
+//
+//            // set margin left and right
+//            val params = child.layoutParams as CoordinatorLayout.LayoutParams
+//            val margin = (mMargin * (3f - process)).toInt()
+//            Log.e("tx", "margin:   $margin")
+//            params.setMargins(margin, 0, margin, 0)
+//            child.layoutParams = params
+//
+//            true
+//        } else {
+//            false
+//        }
+//    }
 }

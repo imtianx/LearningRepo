@@ -36,7 +36,7 @@ object NavigationViewHelper {
 
                 menuView.forEachChild {
                     (it as BottomNavigationItemView).apply {
-                        setShiftingMode(false)
+//                        setShiftingMode(false)
                         // reset check state to update it
                         setChecked(itemData.isChecked)
                     }
