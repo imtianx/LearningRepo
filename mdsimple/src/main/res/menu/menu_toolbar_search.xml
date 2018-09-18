@@ -7,4 +7,8 @@
         android:title="search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_toolbar_share"
+        android:title="分享"
+        app:showAsAction="always"/>
 </menu>

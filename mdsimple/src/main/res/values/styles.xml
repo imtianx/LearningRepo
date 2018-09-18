@@ -27,7 +27,7 @@
         <!--toolbar 图标颜色-->
         <item name="colorControlNormal">@android:color/white</item>
         <!--menu 在 toolbar上的颜色-->
-        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/holo_red_dark</item>
         
         <!--toolbar 溢出惨淡默认图标-->
         <item name="android:actionOverflowButtonStyle">@style/OverFlowIcon</item>
