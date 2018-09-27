@@ -1,1 +1,1 @@
-include ':app', ':mdsimple'
+include ':app', ':mdsimple', ':shortcuts'

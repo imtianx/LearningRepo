@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_crop_free_black_24dp"
+        android:shortcutDisabledMessage="@string/scan_disabled_message"
+        android:shortcutId="scan"
+        android:shortcutLongLabel="@string/scan_shortcut_long_label"
+        android:shortcutShortLabel="@string/scan_shortcut_short_label">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="cn.imtianx.shortcuts.MainActivity"
+            android:targetPackage="cn.imtianx.shortcuts"/>
+        
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="cn.imtianx.shortcuts.ShortcutsActivity"
+            android:targetPackage="cn.imtianx.shortcuts"/>
+        <categories android:name="android.shortcut.conversation"/>
+    </shortcut>
+    
+    
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_menu_black_24dp"
+        android:shortcutDisabledMessage="@string/order_disabled_message"
+        android:shortcutId="order"
+        android:shortcutLongLabel="@string/order_shortcut_long_label"
+        android:shortcutShortLabel="@string/order_shortcut_short_label">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="cn.imtianx.shortcuts.ShortcutsActivity"
+            android:targetPackage="cn.imtianx.shortcuts"/>
+        <categories android:name="android.shortcut.conversation"/>
+    </shortcut>
+    
+    <!--<shortcut-->
+        <!--android:enabled="true"-->
+        <!--android:icon="@drawable/ic_add_circle_outline_black_24dp"-->
+        <!--android:shortcutDisabledMessage="@string/add_disabled_message"-->
+        <!--android:shortcutId="add"-->
+        <!--android:shortcutLongLabel="@string/add_shortcut_long_label"-->
+        <!--android:shortcutShortLabel="@string/add_shortcut_short_label">-->
+        <!--<intent-->
+            <!--android:action="android.intent.action.VIEW"-->
+            <!--android:targetClass="cn.imtianx.shortcuts.ShortcutsActivity"-->
+            <!--android:targetPackage="cn.imtianx.shortcuts"/>-->
+        <!--<categories android:name="android.shortcut.conversation"/>-->
+    <!--</shortcut>-->
+
+</shortcuts>

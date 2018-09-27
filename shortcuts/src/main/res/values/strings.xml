@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ShortCuts</string>
+    
+    <string name="scan_disabled_message">精准配件 is disanle</string>
+    <string name="scan_shortcut_long_label">精准配件</string>
+    <string name="scan_shortcut_short_label">VIN识别</string>
+    
+    <string name="order_disabled_message">我的询价单  is disanle</string>
+    <string name="order_shortcut_long_label">我的询价单</string>
+    <string name="order_shortcut_short_label">我的询价单</string>
+    
+    
+    <string name="add_disabled_message">发布询价  is disanle</string>
+    <string name="add_shortcut_long_label">发布询价</string>
+    <string name="add_shortcut_short_label">发布询价</string>
+</resources>
