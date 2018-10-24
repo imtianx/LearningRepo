@@ -3,4 +3,7 @@
     <string name="text_bills_count">合计：%s</string>
     <string name="text_main_bills_count">已选择价格：%s</string>
     <string name="text_cb_checked">cb_checke：%s</string>
+    
+    
+    <string name="text_test_span">测试 TextView 的设置文本，改变颜色，设置 Spannd 等效果</string>
 </resources>

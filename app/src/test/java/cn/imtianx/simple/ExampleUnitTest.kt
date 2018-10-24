@@ -2,6 +2,7 @@ package cn.imtianx.simple
 
 import cn.imtianx.common.net.HttpRequestClient
 import cn.imtianx.simple.api.ApiService
+import cn.imtianx.simple.repository.HttpsRepository
 import com.google.gson.Gson
 import org.junit.Test
 
@@ -27,6 +28,11 @@ class ExampleUnitTest {
     @Test
     fun testTemp() {
         println("""android.app.ActivityThread${"$"}H""")
+    }
+
+    @Test
+    fun testLogin(){
+        println(HttpsRepository.login2("imtianx","123456").blockingSingle())
     }
 
 }

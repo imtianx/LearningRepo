@@ -2,6 +2,7 @@ package cn.imtianx.common.net
 
 import cn.imtianx.common.net.converter.RespTypeAdapterFactory
 import cn.imtianx.common.net.interceptor.RetryInterceptor
+import cn.imtianx.simple.ui.App
 import com.google.gson.GsonBuilder
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
@@ -22,23 +23,30 @@ class HttpRequestClient private constructor() {
     fun getRetrofit(): Retrofit {
 
         val okHttpClient = OkHttpClient.Builder()
-                .connectTimeout(15,TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-                .addInterceptor(RetryInterceptor())
-                .build()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true)
+            .addInterceptor(RetryInterceptor())
+            .sslSocketFactory(getSSLParams().sSLSocketFactory, getSSLParams().trustManager)
+            .hostnameVerifier(HttpsUtils.getUnSafeHostnameVerifier())
+            .build()
 
         val gson = GsonBuilder()
-                .registerTypeAdapterFactory(RespTypeAdapterFactory())
-                .create()
+            .registerTypeAdapterFactory(RespTypeAdapterFactory())
+            .create()
 
         return Retrofit.Builder()
-                .baseUrl("http://192.168.3.248:8080")
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
+            .baseUrl("https://192.168.0.236/")
+//            .baseUrl("https://192.168.2.104/")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
 
+    }
+
+    fun getSSLParams(): HttpsUtils.SSLParams {
+        return HttpsUtils.getSslSocketFactory(App.instance().getCertificates(), null, null)
     }
 
 

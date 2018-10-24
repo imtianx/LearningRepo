@@ -1,6 +1,8 @@
 package cn.imtianx.common.net.base
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import cn.imtianx.common.net.HttpRequestClient
 import cn.imtianx.common.net.resp.RespResult
 import cn.imtianx.simple.api.ApiService
@@ -21,16 +23,19 @@ open class BaseRepository {
         HttpRequestClient.get().getRetrofit().create(ApiService::class.java)
     }
 
-    protected fun <T> performResponData(observable: Observable<T>): MutableLiveData<RespResult<T>> {
+    @SuppressLint("CheckResult")
+    protected fun <T> performResponseData(observable: Observable<T>): MutableLiveData<RespResult<T>> {
         val liveData = MutableLiveData<RespResult<T>>()
 
         observable.observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({ t ->
-                    liveData.value = RespResult.success(t)
-                }, { throwable ->
-                    liveData.value = RespResult.failed(throwable.localizedMessage)
-                })
+            .subscribeOn(Schedulers.io())
+            .subscribe({ t ->
+                Log.e("tx", "success:$t")
+                liveData.value = RespResult.success(t)
+            }, { throwable ->
+                throwable.printStackTrace()
+                liveData.value = RespResult.failed(throwable.localizedMessage)
+            })
 
         return liveData
     }

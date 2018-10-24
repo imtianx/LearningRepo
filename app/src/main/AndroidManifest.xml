@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="cn.imtianx.simple">
     
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".ui.App"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,6 +29,12 @@
         <activity
             android:name=".raisepriority.RaisePriorityActivity"
             android:label="进程守护"/>
+        <activity
+            android:name=".ui.test.TextViewSpanActivity"
+            android:label="TextViewSpan"/>
+        <activity
+            android:name=".ui.https.TestHttpsActivity"
+            android:label="TestHttps"/>
         
         <service
             android:name=".raisepriority.NormalService"

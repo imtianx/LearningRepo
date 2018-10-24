@@ -8,6 +8,8 @@ import cn.imtianx.jetpacklearning.common.base.BaseDataBindingActivity
 import cn.imtianx.jetpacklearning.common.extentions.getViewModel
 import cn.imtianx.simple.databinding.ActivityMainBinding
 import cn.imtianx.simple.ui.databinding.DataBindingActivity
+import cn.imtianx.simple.ui.https.TestHttpsActivity
+import cn.imtianx.simple.ui.test.TextViewSpanActivity
 import cn.imtianx.simple.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.*
@@ -35,8 +37,12 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
 
         btn_data_binding.onClick {
-            startActivity(Intent(this@MainActivity,
-                    DataBindingActivity::class.java))
+            startActivity(
+                Intent(
+                    this@MainActivity,
+                    DataBindingActivity::class.java
+                )
+            )
         }
 
         btn_retrofit_timeout.onClick {
@@ -45,16 +51,24 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
 
         viewModel.timeOutResult.observe(this@MainActivity, Observer {
             it?.applyActionWithNetworkData(
-                    {
-                        Log.e("tx", "时间：${System.currentTimeMillis()}    success: ${it}")
-                    }, { msg, code ->
-                Log.e("tx", "时间：${System.currentTimeMillis()}    error: $msg  code:$code")
-            }
+                {
+                    Log.e("tx", "时间：${System.currentTimeMillis()}    success: ${it}")
+                }, { msg, code ->
+                    Log.e("tx", "时间：${System.currentTimeMillis()}    error: $msg  code:$code")
+                }
             )
         })
 
         btn_coroutine.onClick {
             exectors.shutdownNow()
+        }
+
+        btn_tv_span.setOnClickListener {
+            TextViewSpanActivity.launch(this@MainActivity)
+        }
+
+        btn_https.setOnClickListener {
+            TestHttpsActivity.launch(this@MainActivity)
         }
     }
 
@@ -87,9 +101,11 @@ class MainActivity : BaseDataBindingActivity<ActivityMainBinding>() {
     }
 
     private fun initThread() {
-        exectors = ThreadPoolExecutor(1, 1, 10, TimeUnit.MILLISECONDS,
-                LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
-                ThreadPoolExecutor.AbortPolicy())
+        exectors = ThreadPoolExecutor(
+            1, 1, 10, TimeUnit.MILLISECONDS,
+            LinkedBlockingQueue<Runnable>(), Executors.defaultThreadFactory(),
+            ThreadPoolExecutor.AbortPolicy()
+        )
 
 
         exectors.execute(CRunnable())

@@ -36,18 +36,8 @@ class RespTypeAdapterFactory : TypeAdapterFactory {
                 var jsonElement = elementAdapter.read(`in`)
                 if (jsonElement.isJsonObject) {
                     val jsonObject = jsonElement.asJsonObject
-
-                    if (jsonObject.has("status")) {
-                        // todo exception deal
-                        if (jsonObject.has("data")) {
-                            jsonElement = jsonObject.get("data")
-
-                            val contentArray = jsonElement.asJsonArray
-                            if (contentArray.size() == 1) {
-                                jsonElement = contentArray.get(0)
-                            }
-
-                        }
+                    if (jsonObject.has("data")) {
+                        jsonElement = jsonObject.get("data")
                     }
                 }
                 return delegate.fromJsonTree(jsonElement)

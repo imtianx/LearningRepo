@@ -14,6 +14,6 @@ import cn.imtianx.common.net.resp.RespResult
 object TestApiRepository : BaseRepository() {
 
     fun testTimeout(): MutableLiveData<RespResult<String>> {
-        return performResponData(apiService.testTimeout())
+        return performResponseData(apiService.testTimeout())
     }
 }

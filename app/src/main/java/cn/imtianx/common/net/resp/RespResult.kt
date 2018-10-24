@@ -12,8 +12,8 @@ class RespResult<out T>(val code: Int = RESP_CODE_SUCCESS, val msg: String? = nu
     fun isSuccess() = code == RESP_CODE_SUCCESS
 
     companion object {
-        const val RESP_CODE_SUCCESS = 1
-        const val RESP_CODE_ERROR = -1
+        private const val RESP_CODE_SUCCESS = 200
+        private const val RESP_CODE_ERROR = -1
 
 
         fun <T> success(data: T?): RespResult<T> {
@@ -28,9 +28,10 @@ class RespResult<out T>(val code: Int = RESP_CODE_SUCCESS, val msg: String? = nu
 
 }
 
-fun <T> RespResult<T>.applyActionWithNetworkData(successAction: (T) -> Unit,
-                                                 failedAction: ((String, Int) -> Unit)?) {
-
+fun <T> RespResult<T>.applyActionWithNetworkData(
+    successAction: (T) -> Unit,
+    failedAction: ((String, Int) -> Unit)?
+) {
     if (isSuccess()) {
         data?.let {
             successAction(it)

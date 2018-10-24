@@ -1,9 +1,9 @@
 package cn.imtianx.simple.api
 
+import cn.imtianx.simple.model.UserInfoBean
 import io.reactivex.Observable
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.Query
 
 /**
  * <pre>
@@ -14,10 +14,13 @@ import retrofit2.http.POST
  */
 interface ApiService {
 
-    @GET("/testTimeout")
+    @GET("testTimeout")
     fun testTimeout(): Observable<String>
 
-    @GET("/article/list/0/json")
+    @GET("article/list/0/json")
     fun testWan(): Observable<String>
+
+    @GET("api/user/login")
+    fun login(@Query("name") name: String, @Query("pwd") pwd: String): Observable<UserInfoBean>
 
 }
