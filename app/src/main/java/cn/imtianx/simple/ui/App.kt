@@ -21,7 +21,7 @@ class App : Application() {
     }
 
     fun getCertificates(): Array<InputStream>? {
-        val cerFileName = "Certificate.cer"
+        val cerFileName = "sercer.cer"
         try {
             return arrayOf(instance().assets.open(cerFileName))
         } catch (e: IOException) {

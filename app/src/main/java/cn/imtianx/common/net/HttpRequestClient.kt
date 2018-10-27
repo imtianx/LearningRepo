@@ -2,6 +2,7 @@ package cn.imtianx.common.net
 
 import cn.imtianx.common.net.converter.RespTypeAdapterFactory
 import cn.imtianx.common.net.interceptor.RetryInterceptor
+import cn.imtianx.simple.BuildConfig
 import cn.imtianx.simple.ui.App
 import com.google.gson.GsonBuilder
 import io.reactivex.schedulers.Schedulers
@@ -21,22 +22,28 @@ import java.util.concurrent.TimeUnit
 class HttpRequestClient private constructor() {
 
     fun getRetrofit(): Retrofit {
-
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .addInterceptor(RetryInterceptor())
             .sslSocketFactory(getSSLParams().sSLSocketFactory, getSSLParams().trustManager)
-            .hostnameVerifier(HttpsUtils.getUnSafeHostnameVerifier())
+            .apply {
+                if (BuildConfig.DEBUG) {
+                    hostnameVerifier(HttpsUtils.getUnSafeHostnameVerifier())
+                }
+            }
             .build()
+
 
         val gson = GsonBuilder()
             .registerTypeAdapterFactory(RespTypeAdapterFactory())
             .create()
 
         return Retrofit.Builder()
-            .baseUrl("https://192.168.0.236/")
+//            .baseUrl("https://192.168.0.236/")
+            .baseUrl("https://testhttps.com/")
+//            .baseUrl("https://mvvm.tech/")
 //            .baseUrl("https://192.168.2.104/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
