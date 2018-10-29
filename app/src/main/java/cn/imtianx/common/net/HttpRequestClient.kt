@@ -5,7 +5,6 @@ import cn.imtianx.common.net.interceptor.RetryInterceptor
 import cn.imtianx.simple.BuildConfig
 import cn.imtianx.simple.ui.App
 import com.google.gson.GsonBuilder
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -27,10 +26,12 @@ class HttpRequestClient private constructor() {
             .readTimeout(15, TimeUnit.SECONDS)
             .retryOnConnectionFailure(true)
             .addInterceptor(RetryInterceptor())
-            .sslSocketFactory(getSSLParams().sSLSocketFactory, getSSLParams().trustManager)
             .apply {
+                HttpsUtils.getSslSocketFactory(App.instance().getCertificates())?.let {
+                    sslSocketFactory(it.sSLSocketFactory, it.trustManager)
+                }
                 if (BuildConfig.DEBUG) {
-                    hostnameVerifier(HttpsUtils.getUnSafeHostnameVerifier())
+                    hostnameVerifier(HttpsUtils.unSafeHostnameVerifier)
                 }
             }
             .build()
@@ -52,8 +53,8 @@ class HttpRequestClient private constructor() {
 
     }
 
-    fun getSSLParams(): HttpsUtils.SSLParams {
-        return HttpsUtils.getSslSocketFactory(App.instance().getCertificates(), null, null)
+    private fun getSSLParams(): HttpsUtils.SSLParams? {
+        return HttpsUtils.getSslSocketFactory(App.instance().getCertificates())
     }
 
 

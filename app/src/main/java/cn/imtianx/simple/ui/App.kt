@@ -20,14 +20,14 @@ class App : Application() {
         XConfig.get().init(this)
     }
 
-    fun getCertificates(): Array<InputStream>? {
+    fun getCertificates(): Array<InputStream?> {
         val cerFileName = "sercer.cer"
-        try {
-            return arrayOf(instance().assets.open(cerFileName))
+        return try {
+            arrayOf(instance().assets.open(cerFileName))
         } catch (e: IOException) {
             e.printStackTrace()
+            arrayOf()
         }
-        return null
     }
 
 
